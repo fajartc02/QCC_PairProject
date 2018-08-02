@@ -1,8 +1,33 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var Theme = sequelize.define('Theme', {
-    activityName: DataTypes.STRING,
-    step: DataTypes.INTEGER
+    activityName: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'please fill group activity name'
+        }
+      }
+    },
+    step: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'please fill step'
+        }
+      }
+    },
+    GroupId: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'please fill GroupId'
+        }
+      }
+    },
   }, {});
   Theme.associate = function(models) {
     // associations can be defined here
